@@ -1,0 +1,20 @@
+{
+  "name": "grid",
+  "version": "0.1.0",
+  "description": "grid data structure",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luizbills/grid"
+  },
+  "keywords": [
+    "data",
+    "structure",
+    "grid"
+  ],
+  "author": "Luiz \"Bills\"",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luizbills/grid/issues"
+  },
+  "homepage": "https://github.com/luizbills/grid"
+}
