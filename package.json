@@ -3,6 +3,7 @@
   "version": "0.2.1",
   "description": "grid data structure",
   "scripts": {
+    "test": "node test/test.js",
     "build": "bash script/build.sh"
   },
   "main": "build/grid.js",

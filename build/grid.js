@@ -29,7 +29,6 @@
       remove: _clearCell,
 
       reset: _resetGrid,
-      destroy: _destroyGrid,
 
       forEach: _forEach,
 
@@ -56,10 +55,6 @@
 
   function _resetGrid() {
     this._cells = [];
-  }
-
-  function _destroyGrid() {
-    this._cells = null;
   }
 
   function _forEach(callback, thisArg) {
@@ -89,7 +84,7 @@
   function _getY(index, width) {
     return Math.floor(index / width);
   }
-
+  
   function _validate(x, y, width, height) {
     if (x < 0 || y < 0 || x >= width || y >= height) {
       throw new Error('Invalid coordinates');
@@ -102,3 +97,4 @@
   // exports
   return grid;
 });
+
