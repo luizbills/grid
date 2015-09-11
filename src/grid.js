@@ -29,7 +29,6 @@
       remove: _clearCell,
 
       reset: _resetGrid,
-      destroy: _destroyGrid,
 
       forEach: _forEach,
 
@@ -64,10 +63,6 @@
     this._cells = [];
   }
 
-  function _destroyGrid() {
-    this._cells = null;
-  }
-
   function _forEach(callback, thisArg) {
     var i = 0,
       cells = this._cells,
@@ -95,7 +90,7 @@
   function _getY(index, width) {
     return Math.floor(index / width);
   }
-
+  
   // #ifdef DEBUG
   function _validate(x, y, width, height) {
     if (x < 0 || y < 0 || x >= width || y >= height) {
