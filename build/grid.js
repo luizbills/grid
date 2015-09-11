@@ -40,23 +40,17 @@
   }
 
   function _getCell(x, y) {
-    // #ifdef DEBUG
     _validate(x, y, this.width, this.height);
-    // #endif
     return this._cells[_getIndex(x, y, this.width)];
   }
 
   function _setCell(x, y, value) {
-    // #ifdef DEBUG
     _validate(x, y, this.width, this.height);
-    // #endif
     return (this._cells[_getIndex(x, y, this.width)] = value);
   }
 
   function _clearCell(x, y) {
-    // #ifdef DEBUG
     _validate(x, y, this.width, this.height);
-    // #endif
     this._cells[_getIndex(x, y, this.width)] = null;
   }
 
@@ -96,7 +90,6 @@
     return Math.floor(index / width);
   }
 
-  // #ifdef DEBUG
   function _validate(x, y, width, height) {
     if (x < 0 || y < 0 || x >= width || y >= height) {
       throw new Error('Invalid coordinates');
@@ -105,7 +98,6 @@
       throw new Error('Invalid grid dimensions');
     }
   }
-  // #endif
 
   // exports
   return grid;

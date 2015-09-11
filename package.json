@@ -1,7 +1,11 @@
 {
   "name": "grid",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "grid data structure",
+  "scripts": {
+    "build": "bash script/build.sh"
+  },
+  "main": "build/grid.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/luizbills/grid"
@@ -16,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/luizbills/grid/issues"
   },
-  "homepage": "https://github.com/luizbills/grid"
+  "homepage": "https://github.com/luizbills/grid",
+  "devDependencies": {
+    "preprocessor": "^1.4.0",
+    "uglify-js": "^2.4.24"
+  }
 }
