@@ -22,7 +22,7 @@ g.reset(); // clear all
 
 console.log( g.get(0, 0) ); // => null
 
-g.forEach(function(currentValue, x, y, grid) {
+g.forEach(function(currentValue, x, y) {
   this.set(x, y, x + "," + y);
 }, g /* Context (optional). Value to use as "this" when executing callback. */);
 
