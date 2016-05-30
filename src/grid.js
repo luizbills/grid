@@ -31,6 +31,7 @@
       reset: _resetGrid,
 
       forEach: _forEach,
+      map: _map,
 
       _cells: []
     };
@@ -65,15 +66,32 @@
 
   function _forEach(callback, thisArg) {
     var i = 0,
-      cells = this._cells,
-      len = this.length;
+      self = this,
+      cells = self._cells,
+      len = self.length;
 
     for (; i < len; i++) {
-      var x = _getX(i, this.width),
-        y = _getY(i, this.width),
+      var x = _getX(i, self.width),
+        y = _getY(i, self.width),
         value = cells[len] != null ? cells[len] : null;
 
-      callback.call(thisArg, value, x, y);
+      callback.call(thisArg, value, x, y, self);
+    }
+  }
+  
+  function _map(callback, thisArg) {
+    var i = 0,
+      self = this,
+      cells = self._cells,
+      len = self.length,
+      result = grid(self.width, self.height);
+
+    for (; i < len; i++) {
+      var x = _getX(i, self.width),
+        y = _getY(i, self.width),
+        value = cells[len] != null ? cells[len] : null;
+
+      result.set(x, y, callback.call(thisArg, value, x, y, self));
     }
   }
 
