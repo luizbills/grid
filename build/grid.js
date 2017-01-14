@@ -10,9 +10,11 @@
       root.grid = factory();
   }
 })(this, function () {
+  var NULL;
+
   function grid(width, height) {
-    width = +width || 1;
-    height = +height || 1;
+    width = (width|0) || 1;
+    height = (height|0) || 1;
 
     var instance = {
       /** @readonly */
@@ -27,6 +29,7 @@
       get: _getCell,
       set: _setCell,
       remove: _clearCell,
+      isValid: _isValidPosition,
 
       reset: _resetGrid,
 
@@ -39,17 +42,17 @@
   }
 
   function _getCell(x, y) {
-    _validate(x, y, this.width, this.height);
+    if ( !_validate(x, y, this.width, this.height) ) throw new Error('Invalid coordinates');
     return this._cells[_getIndex(x, y, this.width)];
   }
 
   function _setCell(x, y, value) {
-    _validate(x, y, this.width, this.height);
+    if ( !_validate(x, y, this.width, this.height) ) throw new Error('Invalid coordinates');
     return (this._cells[_getIndex(x, y, this.width)] = value);
   }
 
   function _clearCell(x, y) {
-    _validate(x, y, this.width, this.height);
+    if ( !_validate(x, y, this.width, this.height) ) throw new Error('Invalid coordinates');
     this._cells[_getIndex(x, y, this.width)] = null;
   }
 
@@ -65,7 +68,7 @@
     for (; i < len; i++) {
       var x = _getX(i, this.width),
         y = _getY(i, this.width),
-        value = cells[len] != null ? cells[len] : null;
+        value = cells[len] !== NULL ? cells[len] : NULL;
 
       callback.call(thisArg, value, x, y);
     }
@@ -84,14 +87,16 @@
   function _getY(index, width) {
     return Math.floor(index / width);
   }
-  
+
+  function _isValidPosition(x, y) {
+    return _validate(x, y, this.width, this.height);
+  }
+
   function _validate(x, y, width, height) {
     if (x < 0 || y < 0 || x >= width || y >= height) {
-      throw new Error('Invalid coordinates');
+      return false;
     }
-    else if (width < 0 || height < 0) {
-      throw new Error('Invalid grid dimensions');
-    }
+    return true
   }
 
   // exports
