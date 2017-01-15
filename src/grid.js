@@ -67,7 +67,7 @@
   }
 
   function _resizeGrid (width, height) {
-    if ( width < 0 || height < 0 ) throw new Error('Invalid grid size');
+    if ( width <= 0 || height <= 0 ) throw new Error('Invalid grid size');
     this.width = width;
     this.height = height;
     this.length = width * height;
