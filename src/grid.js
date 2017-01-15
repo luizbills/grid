@@ -30,11 +30,15 @@
       set: _setCell,
       remove: _clearCell,
       isValid: _isValidPosition,
+      resize: _resizeGrid,
 
       reset: _resetGrid,
 
       forEach: _forEach,
+      map: _map,
+      clone: _clone,
 
+      /** @private */
       _cells: []
     };
 
@@ -62,22 +66,62 @@
     this._cells[_getIndex(x, y, this.width)] = NULL;
   }
 
+  function _resizeGrid (width, height) {
+    if ( width < 0 || height < 0 ) throw new Error('Invalid grid size');
+    this.width = width;
+    this.height = height;
+    this.length = width * height;
+  }
+
   function _resetGrid() {
     this._cells = [];
   }
 
+  function _isValidPosition(x, y) {
+    return _validate(x, y, this.width, this.height);
+  }
+
   function _forEach(callback, thisArg) {
     var i = 0,
-      cells = this._cells,
-      len = this.length;
+      _this = this,
+      cells = _this._cells,
+      len = _this.length;
 
     for (; i < len; i++) {
-      var x = _getX(i, this.width),
-        y = _getY(i, this.width),
-        value = cells[len] !== NULL ? cells[len] : NULL;
-
-      callback.call(thisArg, value, x, y);
+      callback.call(thisArg, cells[i], _getX(i, _this.width), _getY(i, _this.width), _this);
     }
+  }
+
+  function _map(callback, thisArg) {
+    var i = 0,
+      _this = this,
+      cells = _this._cells,
+      len = _this.length,
+      result = grid(_this.width, _this.height);
+
+    for (; i < len; i++) {
+      var x = _getX(i, _this.width),
+        y = _getY(i, _this.width);
+
+      result.set(x, y, callback.call(thisArg, cells[i], x, y, _this));
+    }
+
+    return result;
+  }
+
+  function _clone() {
+    var i = 0,
+      _this = this,
+      cells = _this._cells,
+      len = _this.length,
+      result = grid(_this.width, _this.height);
+
+    for (; i < len; i++) {
+      if ( cells[i] === NULL ) continue;
+      result.set(_getX(i, _this.width), _getY(i, _this.width), cells[i]);
+    }
+
+    return result;
   }
 
 
@@ -92,10 +136,6 @@
 
   function _getY(index, width) {
     return Math.floor(index / width);
-  }
-
-  function _isValidPosition(x, y) {
-    return _validate(x, y, this.width, this.height);
   }
 
   function _validate(x, y, width, height) {
