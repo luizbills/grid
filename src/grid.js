@@ -59,7 +59,7 @@
     // #ifdef DEBUG
     if ( !_validate(x, y, this.width, this.height) ) throw new Error('Invalid coordinates');
     // #endif
-    this._cells[_getIndex(x, y, this.width)] = null;
+    this._cells[_getIndex(x, y, this.width)] = NULL;
   }
 
   function _resetGrid() {

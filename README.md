@@ -16,7 +16,11 @@ console.log( g.get(4, 4) ); // => "last cell"
 
 g.remove(4, 4);
 
-console.log( g.get(4, 4) ); // => null
+console.log( g.get(4, 4) ); // => undefined
+
+console.log( g.isValid(-1, 4) ); // => false (because is outside of the grid)
+console.log( g.isValid(5, 5) ); // => false (because the positions of grid is 0-based)
+console.log( g.isValid(2, 3) ); // => true (a valid position)
 
 g.reset(); // clear all
 
