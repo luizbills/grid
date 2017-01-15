@@ -40,18 +40,21 @@ console.log( g.isValid(5, 5) ); // => true (now is valid)
 
 g.reset(); // clear all
 
-console.log( g.get(0, 0) ); // => null
+console.log( g.get(0, 0) ); // => undefined
 
-g.forEach(function(currentValue, x, y) {
-  this.set(x, y, x + "," + y);
-}, g /* Context (optional). Value to use as "this" when executing callback. */);
+g.forEach(function(currentValue, x, y, grid) {
+  grid.set(x, y, x + "," + y);
+});
 
-console.log( g.get(2,3) ); // => 2,3
+console.log( g.get(2,3) ); // => "2,3"
 
-// others methods
-g.clone(); // returns a copy of the grid
-g.map(); // similar to Array.prototype.map
+/* others methods
+  
+  g.clone(); // returns a copy of the grid
+  
+  g.map(); // similar to Array.prototype.map
 
+*/
 ```
 
 ---------
