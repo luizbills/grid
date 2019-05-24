@@ -1,6 +1,6 @@
 # GRID
 
-grid data structure
+Simple grid data structure.
 
 ---------
 
