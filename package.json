@@ -1,12 +1,21 @@
 {
-  "name": "grid",
+  "name": "@luizbills/grid",
   "version": "1.0.0",
-  "description": "grid data structure",
+  "description": "Simple Grid Data Structure",
+  "main": "src/index.js",
   "scripts": {
-    "test": "node test/test.js",
-    "build": "bash script/build.sh"
+    "dev": "rollup -cw",
+    "start": "rollup -c",
+    "test": "tape test/**/*.js"
   },
-  "main": "build/grid.js",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "rollup": "^1.10.1",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-terser": "^4.0.4",
+    "tape": "^4.10.1"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/luizbills/grid"
@@ -20,10 +29,5 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/luizbills/grid/issues"
-  },
-  "homepage": "https://github.com/luizbills/grid",
-  "devDependencies": {
-    "preprocessor": "^1.4.0",
-    "uglify-js": "^2.4.24"
   }
 }
