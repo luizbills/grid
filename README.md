@@ -6,14 +6,8 @@ Simple grid data structure.
 
 ## Install
 
-Development:
 ```
-https://rawgit.com/luizbills/grid/master/build/grid.js
-```
-
-Production:
-```
-https://rawgit.com/luizbills/grid/master/build/grid.min.js
+npm install grid-data
 ```
 
 ## Usage

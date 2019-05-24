@@ -1,5 +1,5 @@
 {
-  "name": "@luizbills/grid",
+  "name": "grid-data",
   "version": "2.0.0",
   "description": "Simple Grid Data Structure",
   "main": "src/index.js",
@@ -7,7 +7,7 @@
     "dev": "rollup -cw",
     "build": "rollup -c",
     "test": "tape test/**/*.js",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm test && npm run build"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
