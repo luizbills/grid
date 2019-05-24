@@ -5,8 +5,9 @@
   "main": "src/index.js",
   "scripts": {
     "dev": "rollup -cw",
-    "start": "rollup -c",
-    "test": "tape test/**/*.js"
+    "build": "rollup -c",
+    "test": "tape test/**/*.js",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
