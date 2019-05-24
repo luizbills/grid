@@ -2,7 +2,7 @@ import { terser } from 'rollup-plugin-terser';
 import babel from 'rollup-plugin-babel';
 import banner from 'rollup-plugin-banner';
 
-const bannerContent = 'pkg.name v<%= pkg.version %> by <%= pkg.author %>\n<%= pkg.repository.url %> | pkg.license';
+const bannerContent = '<%= pkg.name %> v<%= pkg.version %> by <%= pkg.author %>\n<%= pkg.repository.url %> | <%= pkg.license %>';
 
 const plugins = [
   babel({

@@ -1,6 +1,6 @@
 /** 
- * pkg.name v2.0.0 by Luiz "Bills"
- * https://github.com/luizbills/grid | pkg.license
+ * grid-data v2.0.1 by Luiz "Bills"
+ * https://github.com/luizbills/grid | MIT
  */
 (function () {
   'use strict';
