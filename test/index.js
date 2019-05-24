@@ -188,6 +188,19 @@ test('.forEach()', assert => {
   assert.end();
 })
 
+test('static .fromArray()', assert => {
+  const values = [1, 2,
+                  3, 4]
+
+  const gridFromArray = Grid.fromArray(2, 2, values)
+
+  actual = gridFromArray.toArray();
+  expected = values;
+  assert.deepEqual(actual, expected, 'should populate the grid with the values in array');
+
+  assert.end();
+})
+
 test('.width', assert => {
   grid.clear();
 
