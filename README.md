@@ -19,42 +19,53 @@ https://rawgit.com/luizbills/grid/master/build/grid.min.js
 ## Usage
 
 ```js
-var g = grid(5, 5); // create a grid 5x5
+// create a empty 2x2 grid
+const g = new Grid(2, 2) // create a grid 2x2
 
-g.set(0, 0, "first cell");
-g.set(4, 4, "last cell");
+// set values
+g.set(0, 0, "first cell") // zero-based index
+g.set(1, 1, "last cell")
 
-console.log( g.get(4, 4) ); // => "last cell"
+// get values
+console.log(g.get(0, 0)) // => "first cell"
+console.log(g.get(1, 1)) // => "last cell"
 
-g.remove(4, 4);
+// check a position
+console.log(g.has(0, 1)) // => false
 
-console.log( g.get(4, 4) ); // => undefined
+// create a 2x2 grid from a Array
+const ga = Grid.fromArray([1,2,3,4], 2, 2)
 
-console.log( g.isValid(-1, 4) ); // => false (because is outside of the grid)
-console.log( g.isValid(5, 5) ); // => false (because the positions of grid is 0-based)
-console.log( g.isValid(2, 3) ); // => true (a valid position)
+console.log(g.get(0, 0)) // => 1
+console.log(g.get(0, 1)) // => 2
+console.log(g.get(1, 0)) // => 3
+console.log(g.get(1, 1)) // => 4
 
-g.resize(8, 8); // changes the size of the grid
+// export the grid as Array
+console.log(ga.toArray()); // => [1,2,3,4]
 
-console.log( g.isValid(5, 5) ); // => true (now is valid)
+// export the grid as String
+console.log(ga.toString()); // => 1,2,3,4
 
-g.reset(); // clear all
+// use forEach to interact
+ga.forEach(function (value, x, y) {
+	// do something...
+})
 
-console.log( g.get(0, 0) ); // => undefined
+// sanitizes a X position with .clipX (or use .clipY for Y positions)
+console.log(ga.clipX(5)) // => 1
+console.log(ga.clipY(-1)) // => 0
 
-g.forEach(function(currentValue, x, y, grid) {
-  grid.set(x, y, x + "," + y);
-});
+// clone a grid
+const cloned = ga.clone()
 
-console.log( g.get(2,3) ); // => "2,3"
+// clear all stored values
+ga.clear()
 
-/* others methods
-  
-  g.clone(); // returns a copy of the grid
-  
-  g.map(); // similar to Array.prototype.map
-
-*/
+// public properties
+g.width
+g.height
+g.length // === g.width * g.height
 ```
 
 ---------
