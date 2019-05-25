@@ -28,7 +28,7 @@ console.log(g.get(1, 1)) // => "last cell"
 console.log(g.has(0, 1)) // => false
 
 // create a 2x2 grid from a Array
-const ga = Grid.fromArray([1,2,3,4], 2, 2)
+const ga = Grid.fromArray(2, 2, [1,2,3,4])
 
 console.log(g.get(0, 0)) // => 1
 console.log(g.get(0, 1)) // => 2
