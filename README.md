@@ -28,12 +28,12 @@ console.log(g.get(1, 1)) // => "last cell"
 console.log(g.has(0, 1)) // => false
 
 // create a 2x2 grid from a Array
-const ga = Grid.fromArray(2, 2, [1,2,3,4])
+const ga = Grid.fromArray(2, 2, [1, 2, 3, 4])
 
-console.log(g.get(0, 0)) // => 1
-console.log(g.get(0, 1)) // => 2
-console.log(g.get(1, 0)) // => 3
-console.log(g.get(1, 1)) // => 4
+console.log(ga.get(0, 0)) // => 1
+console.log(ga.get(0, 1)) // => 2
+console.log(ga.get(1, 0)) // => 3
+console.log(ga.get(1, 1)) // => 4
 
 // export the grid as Array
 console.log(ga.toArray()); // => [1,2,3,4]
