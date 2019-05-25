@@ -14,7 +14,7 @@ npm install grid-data
 
 ```js
 // create a empty 2x2 grid
-const g = new Grid(2, 2) // create a grid 2x2
+const g = new Grid(2, 2)
 
 // set values
 g.set(0, 0, "first cell") // zero-based index
