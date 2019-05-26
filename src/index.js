@@ -30,18 +30,27 @@ class Grid {
     return this.__width * this.__height;
   }
 
-  forEach (callback) {
+  forEach (callback, reverse = false) {
     const cells = this.__cells,
           w = this.__width,
-          h = this.__height;
+          h = this.__height,
+          limitX = !reverse ? w : -1,
+          limitY = !reverse ? h : -1;
+    let x = !reverse ? 0 : w - 1,
+        y = !reverse ? 0 : h - 1;
 
-    for (let y = 0; y < h; y++) {
+    while (y != limitY) {
       let proceed;
-      for (let x = 0; x < w; x++) {
+      x = !reverse ? 0 : w - 1
+      while (x != limitX) {
         proceed = callback(cells[this.__getIndex(x, y)], x, y, this);
         if (false === proceed) break;
+        x += reverse ? -1 : 1;
+        console.log(x, y)
       }
       if (false === proceed) break;
+      y += reverse ? -1 : 1;
+      console.log(x, y)
     }
     return this;
   }

@@ -1,8 +1,8 @@
 const test = require('tape');
 const Grid = require('../src');
 
-const w = 2;
-const h = 2;
+const w = 3;
+const h = 3;
 const grid = new Grid(w, h);
 
 let actual, expected;
@@ -131,11 +131,16 @@ test('.clipY()', assert => {
 test('.toArray()', assert => {
   grid.clear();
 
-  const values = [1, 2, 3, 4]
-  let count = 0;
+  const values = []
+  let i = 0
 
+  for(; i < grid.length; i++) {
+    values.push(i + 1); // values => [1, 2, 3, 4, ...]
+  }
+
+  i = 0
   grid.forEach((value, x, y) => {
-    grid.set(x, y, values[count++])
+    grid.set(x, y, values[i++])
   })
 
   actual = grid.toArray();
@@ -152,11 +157,16 @@ test('.toArray()', assert => {
 test('.toString()', assert => {
   grid.clear();
 
-  const values = [1, 2, 3, 4]
-  let count = 0;
+  const values = []
+  let i = 0
 
+  for(; i < grid.length; i++) {
+    values.push(i + 1); // values => [1, 2, 3, 4, ...]
+  }
+
+  i = 0
   grid.forEach((value, x, y) => {
-    grid.set(x, y, values[count++])
+    grid.set(x, y, values[i++])
   })
 
   actual = grid.toString();
@@ -194,12 +204,26 @@ test('.forEach()', assert => {
   actual = count;
   expected = 1;
   assert.deepEqual(actual, expected, 'should stop the loop if the callback returns false');
+
+  let position;
+  const lastPosition = {
+    x: grid.width - 1,
+    y: grid.height - 1,
+  }
+  grid.forEach(function (val, x, y) {
+    position = {x, y}
+    return false
+  }, true)
+
+  actual = position;
+  expected = lastPosition;
+  assert.deepEqual(actual, expected, 'should do a reverse loop if the second argument is truly');
+
   assert.end();
 })
 
 test('static .fromArray()', assert => {
-  const values = [1, 2,
-                  3, 4]
+  const values = [1, 2, 3, 4]
 
   const gridFromArray = Grid.fromArray(2, 2, values)
 
