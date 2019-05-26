@@ -34,10 +34,14 @@ class Grid {
     const cells = this.__cells,
           w = this.__width,
           h = this.__height;
+
     for (let y = 0; y < h; y++) {
+      let proceed;
       for (let x = 0; x < w; x++) {
-        callback(cells[this.__getIndex(x, y)], x, y, this);
+        proceed = callback(cells[this.__getIndex(x, y)], x, y, this);
+        if (false === proceed) break;
       }
+      if (false === proceed) break;
     }
     return this;
   }

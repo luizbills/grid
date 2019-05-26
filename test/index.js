@@ -185,6 +185,15 @@ test('.forEach()', assert => {
   expected = coordinates.length;
   assert.deepEqual(actual, expected, 'should executes a provided function once for each cell of grid');
 
+  let count = 0;
+  grid.forEach(function () {
+    count++;
+    return false
+  })
+
+  actual = count;
+  expected = 1;
+  assert.deepEqual(actual, expected, 'should stop the loop if the callback returns false');
   assert.end();
 })
 
