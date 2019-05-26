@@ -1,5 +1,5 @@
 /** 
- * grid-data v2.0.1 by Luiz "Bills"
+ * grid-data v2.1.0 by Luiz "Bills"
  * https://github.com/luizbills/grid | MIT
  */
 (function () {
@@ -57,14 +57,29 @@
     }, {
       key: "forEach",
       value: function forEach(callback) {
+        var reverse = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
         var cells = this.__cells,
             w = this.__width,
-            h = this.__height;
+            h = this.__height,
+            limitX = !reverse ? w : -1,
+            limitY = !reverse ? h : -1;
+        var x = !reverse ? 0 : w - 1,
+            y = !reverse ? 0 : h - 1;
 
-        for (var y = 0; y < h; y++) {
-          for (var x = 0; x < w; x++) {
-            callback(cells[this.__getIndex(x, y)], x, y, this);
+        while (y != limitY) {
+          var proceed = void 0;
+          x = !reverse ? 0 : w - 1;
+
+          while (x != limitX) {
+            proceed = callback(cells[this.__getIndex(x, y)], x, y, this);
+            if (false === proceed) break;
+            x += reverse ? -1 : 1;
+            console.log(x, y);
           }
+
+          if (false === proceed) break;
+          y += reverse ? -1 : 1;
+          console.log(x, y);
         }
 
         return this;
