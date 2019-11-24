@@ -46,11 +46,9 @@ class Grid {
         proceed = callback(cells[this.__getIndex(x, y)], x, y, this);
         if (false === proceed) break;
         x += reverse ? -1 : 1;
-        console.log(x, y)
       }
       if (false === proceed) break;
       y += reverse ? -1 : 1;
-      console.log(x, y)
     }
     return this;
   }
