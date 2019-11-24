@@ -1,5 +1,5 @@
 /** 
- * grid-data v2.1.0 by Luiz "Bills"
+ * grid-data v2.1.1 by Luiz "Bills"
  * https://github.com/luizbills/grid | MIT
  */
 (function () {
@@ -74,12 +74,10 @@
             proceed = callback(cells[this.__getIndex(x, y)], x, y, this);
             if (false === proceed) break;
             x += reverse ? -1 : 1;
-            console.log(x, y);
           }
 
           if (false === proceed) break;
           y += reverse ? -1 : 1;
-          console.log(x, y);
         }
 
         return this;
